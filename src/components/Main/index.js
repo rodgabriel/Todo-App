@@ -1,22 +1,25 @@
-import { Container, Category } from "./styles";
+import { Container, Category, CategoryTitle, Card } from "./styles";
 
 export default function index() {
     return (
         <Container>
             <Category>
-                <div>MAIN 1</div>
-                <div>MAIN 2</div>
-                <div>MAIN 3</div>
+                <CategoryTitle>To do</CategoryTitle>
+                <Card>MAIN 1</Card>
+                <Card>MAIN 2</Card>
+                <Card>MAIN 3</Card>
             </Category>
             <Category>
-                <div>MAIN 1</div>
-                <div>MAIN 2</div>
-                <div>MAIN 3</div>
+                <CategoryTitle>In progress</CategoryTitle>
+                <Card>MAIN 1</Card>
+                <Card>MAIN 2</Card>
+                <Card>MAIN 3</Card>
             </Category>
             <Category>
-                <div>MAIN 1</div>
-                <div>MAIN 2</div>
-                <div>MAIN 3</div>
+                <CategoryTitle>Done</CategoryTitle>
+                <Card>MAIN 1</Card>
+                <Card>MAIN 2</Card>
+                <Card>MAIN 3</Card>
             </Category>
         </Container>
     );
