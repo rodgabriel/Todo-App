@@ -13,21 +13,63 @@ export default function Index() {
         <Container>
             <Category>
                 <CategoryTitle>To do</CategoryTitle>
-                <Card>MAIN 1</Card>
-                <Card>MAIN 2</Card>
-                <Card>MAIN 3</Card>
+                {tasks
+                    .filter((task) => {
+                        return task.category === "todo";
+                    })
+                    .map((task, index) => {
+                        return (
+                            <Card>
+                                <h3>
+                                    {`# ${index}`} {task.task}
+                                </h3>
+                                <span>{task.urgency}</span>
+                                <span>{task.dueDate}</span>
+                                <br />
+                                <span>{task.category}</span>
+                            </Card>
+                        );
+                    })}
             </Category>
             <Category>
                 <CategoryTitle>In progress</CategoryTitle>
-                <Card>MAIN 1</Card>
-                <Card>MAIN 2</Card>
-                <Card>MAIN 3</Card>
+                {tasks
+                    .filter((task) => {
+                        return task.category === "doing";
+                    })
+                    .map((task, index) => {
+                        return (
+                            <Card>
+                                <h3>
+                                    {`# ${index}`} {task.task}
+                                </h3>
+                                <span>{task.urgency}</span>
+                                <span>{task.dueDate}</span>
+                                <br />
+                                <span>{task.category}</span>
+                            </Card>
+                        );
+                    })}
             </Category>
             <Category>
                 <CategoryTitle>Done</CategoryTitle>
-                <Card>MAIN 1</Card>
-                <Card>MAIN 2</Card>
-                <Card>MAIN 3</Card>
+                {tasks
+                    .filter((task) => {
+                        return task.category === "done";
+                    })
+                    .map((task, index) => {
+                        return (
+                            <Card>
+                                <h3>
+                                    {`# ${index}`} {task.task}
+                                </h3>
+                                <span>{task.urgency}</span>
+                                <span>{task.dueDate}</span>
+                                <br />
+                                <span>{task.category}</span>
+                            </Card>
+                        );
+                    })}
             </Category>
         </Container>
     );
