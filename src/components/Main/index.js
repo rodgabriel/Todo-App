@@ -1,6 +1,14 @@
+import { useEffect, useState } from "react";
 import { Container, Category, CategoryTitle, Card } from "./styles";
 
-export default function index() {
+import data from "../../fakedata.json";
+
+export default function Index() {
+    const [tasks, setTasks] = useState({});
+    useEffect(() => {
+        fetch(data).then(setTasks(data)).then(console.log(tasks));
+    }, [tasks]);
+
     return (
         <Container>
             <Category>

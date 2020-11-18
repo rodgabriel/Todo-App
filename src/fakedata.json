@@ -1,0 +1,26 @@
+[
+    {
+        "task": "Tarefa 1",
+        "urgency": "Importante",
+        "dueDate": "",
+        "category": "todo"
+    },
+    {
+        "task": "Tarefa 2",
+        "urgency": "Urgente",
+        "dueDate": "",
+        "category": "doing"
+    },
+    {
+        "task": "Tarefa 3",
+        "urgency": "",
+        "dueDate": "03/12/2020",
+        "category": "doing"
+    },
+    {
+        "task": "Tarefa 4",
+        "urgency": "Importante",
+        "dueDate": "",
+        "category": "done"
+    }
+]
