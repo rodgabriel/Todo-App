@@ -1,35 +1,41 @@
 import { useEffect, useState } from "react";
-import { Container, Category, CategoryTitle, Card } from "./styles";
+import {
+    Container,
+    Category,
+    CategoryTitle,
+    Card,
+    CardTitle,
+    Urgency,
+    Date,
+} from "./styles";
 
 import data from "../../fakedata.json";
 
 export default function Index() {
-    const [tasks, setTasks] = useState({});
+    const [tasks, setTasks] = useState([]);
+
     useEffect(() => {
-        fetch(data).then(setTasks(data)).then(console.log(tasks));
-    }, [tasks]);
+        fetch(data).then(setTasks(data));
+    }, []);
 
     return (
         <Container>
             <Category>
                 <CategoryTitle>To do</CategoryTitle>
-                {tasks
-                    .filter((task) => {
-                        return task.category === "todo";
-                    })
-                    .map((task, index) => {
-                        return (
-                            <Card>
-                                <h3>
-                                    {`# ${index}`} {task.task}
-                                </h3>
-                                <span>{task.urgency}</span>
-                                <span>{task.dueDate}</span>
-                                <br />
-                                <span>{task.category}</span>
-                            </Card>
-                        );
-                    })}
+                {tasks.map((task) => {
+                    return (
+                        <Card key={task.task}>
+                            <CardTitle>{task.task}</CardTitle>
+                            {task.urgency && (
+                                <Urgency urgency={task.urgency}>
+                                    {task.urgency}
+                                </Urgency>
+                            )}
+
+                            <Date>{task.dueDate}</Date>
+                        </Card>
+                    );
+                })}
             </Category>
             <Category>
                 <CategoryTitle>In progress</CategoryTitle>
@@ -40,10 +46,8 @@ export default function Index() {
                     .map((task, index) => {
                         return (
                             <Card>
-                                <h3>
-                                    {`# ${index}`} {task.task}
-                                </h3>
-                                <span>{task.urgency}</span>
+                                <CardTitle>{task.task}</CardTitle>
+                                <Urgency>{task.urgency}</Urgency>
                                 <span>{task.dueDate}</span>
                                 <br />
                                 <span>{task.category}</span>
@@ -60,10 +64,8 @@ export default function Index() {
                     .map((task, index) => {
                         return (
                             <Card>
-                                <h3>
-                                    {`# ${index}`} {task.task}
-                                </h3>
-                                <span>{task.urgency}</span>
+                                <CardTitle>{task.task}</CardTitle>
+                                <Urgency>{task.urgency}</Urgency>
                                 <span>{task.dueDate}</span>
                                 <br />
                                 <span>{task.category}</span>

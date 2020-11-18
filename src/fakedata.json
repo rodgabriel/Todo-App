@@ -1,14 +1,14 @@
 [
     {
         "task": "Tarefa 1",
-        "urgency": "Importante",
-        "dueDate": "",
+        "urgency": "important",
+        "dueDate": "01/10/2020",
         "category": "todo"
     },
     {
-        "task": "Tarefa 2",
-        "urgency": "Urgente",
-        "dueDate": "",
+        "task": "Tarefa muito importante que deve ser feita sem demora para que obtenhamos os resultados esperados no tempo estabelecido",
+        "urgency": "urgent",
+        "dueDate": "13/11/2020",
         "category": "doing"
     },
     {
@@ -19,8 +19,8 @@
     },
     {
         "task": "Tarefa 4",
-        "urgency": "Importante",
-        "dueDate": "",
+        "urgency": "important",
+        "dueDate": "27/12/2020",
         "category": "done"
     }
 ]

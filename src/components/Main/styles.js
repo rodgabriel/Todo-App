@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.main`
     height: 100%;
     width: 100%;
 
@@ -30,7 +30,7 @@ export const CategoryTitle = styled.div`
 
 export const Card = styled.div`
     width: 100%;
-    height: 120px;
+    min-height: 120px;
 
     background: #fff;
     box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.25);
@@ -39,4 +39,36 @@ export const Card = styled.div`
 
     margin: 12px 0;
     padding: 20px;
+`;
+
+export const CardTitle = styled.div`
+    width: 100%;
+    height: auto;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    margin-bottom: 12px;
+`;
+
+export const Urgency = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+
+    padding: 4px 20px;
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+    background: ${(props) => (props.urgency === "urgent" ? "#9F46E4" : "#FFA800")};
+    color: #fff;
+
+    font-size: 12px;
+    text-transform: capitalize;
+`;
+
+export const Date = styled.div`
+    font-size: 12px;
 `;
