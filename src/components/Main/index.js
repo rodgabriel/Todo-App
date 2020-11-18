@@ -12,6 +12,7 @@ import {
 import data from "../../fakedata.json";
 
 export default function Index() {
+    const categories = { "To do": "todo", "In progress": "doing", Done: "done" };
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
@@ -20,59 +21,37 @@ export default function Index() {
 
     return (
         <Container>
-            <Category>
-                <CategoryTitle>To do</CategoryTitle>
-                {tasks.map((task) => {
-                    return (
-                        <Card key={task.task}>
-                            <CardTitle>{task.task}</CardTitle>
-                            {task.urgency && (
-                                <Urgency urgency={task.urgency}>
-                                    {task.urgency}
-                                </Urgency>
-                            )}
+            {Object.keys(categories).map((category) => {
+                return (
+                    <Category>
+                        <CategoryTitle>{category}</CategoryTitle>
+                        {tasks
+                            .filter((task) => {
+                                return task.category === categories[category];
+                            })
+                            .map((task) => {
+                                return (
+                                    <Card key={task.task}>
+                                        <CardTitle>
+                                            <i class="far fa-check-circle"></i>
+                                            {task.task}
+                                        </CardTitle>
+                                        {task.urgency && (
+                                            <Urgency urgency={task.urgency}>
+                                                {task.urgency}
+                                            </Urgency>
+                                        )}
 
-                            <Date>{task.dueDate}</Date>
-                        </Card>
-                    );
-                })}
-            </Category>
-            <Category>
-                <CategoryTitle>In progress</CategoryTitle>
-                {tasks
-                    .filter((task) => {
-                        return task.category === "doing";
-                    })
-                    .map((task, index) => {
-                        return (
-                            <Card>
-                                <CardTitle>{task.task}</CardTitle>
-                                <Urgency>{task.urgency}</Urgency>
-                                <span>{task.dueDate}</span>
-                                <br />
-                                <span>{task.category}</span>
-                            </Card>
-                        );
-                    })}
-            </Category>
-            <Category>
-                <CategoryTitle>Done</CategoryTitle>
-                {tasks
-                    .filter((task) => {
-                        return task.category === "done";
-                    })
-                    .map((task, index) => {
-                        return (
-                            <Card>
-                                <CardTitle>{task.task}</CardTitle>
-                                <Urgency>{task.urgency}</Urgency>
-                                <span>{task.dueDate}</span>
-                                <br />
-                                <span>{task.category}</span>
-                            </Card>
-                        );
-                    })}
-            </Category>
+                                        <Date>
+                                            <i className="far fa-calendar"></i>
+                                            <span>{task.dueDate}</span>
+                                        </Date>
+                                    </Card>
+                                );
+                            })}
+                    </Category>
+                );
+            })}
         </Container>
     );
 }

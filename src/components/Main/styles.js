@@ -29,6 +29,11 @@ export const CategoryTitle = styled.div`
 `;
 
 export const Card = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
     width: 100%;
     min-height: 120px;
 
@@ -38,10 +43,12 @@ export const Card = styled.div`
     border-radius: 12px;
 
     margin: 12px 0;
-    padding: 20px;
+    padding: 20px 30px;
 `;
 
 export const CardTitle = styled.div`
+    flex: 1;
+
     width: 100%;
     height: auto;
 
@@ -49,6 +56,10 @@ export const CardTitle = styled.div`
     font-weight: 600;
 
     margin-bottom: 12px;
+
+    > i {
+        margin-right: 12px;
+    }
 `;
 
 export const Urgency = styled.div`
@@ -70,5 +81,16 @@ export const Urgency = styled.div`
 `;
 
 export const Date = styled.div`
+    width: 90px;
+    height: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     font-size: 12px;
+
+    > i {
+        font-size: 16px;
+    }
 `;
