@@ -1,5 +1,17 @@
+import GlobalStyle from "./globalStyles";
+
+// components
+import NavBar from "./components/NavBar";
+import Main from "./components/Main";
+
 function App() {
-    return <div className="App">APP</div>;
+    return (
+        <>
+            <GlobalStyle />
+            <NavBar />
+            <Main />
+        </>
+    );
 }
 
 export default App;
