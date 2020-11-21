@@ -6,11 +6,54 @@
         "category": "todo"
     },
     {
-        "task": "Tarefa muito importante que deve ser feita sem demora para que obtenhamos os resultados esperados no tempo estabelecido",
+        "task": "Tarefa muito importante que deve ser feita sem demora para que obtenhamos os resultados esperados no tempo",
         "urgency": "urgent",
         "dueDate": "13/11/2020",
         "category": "doing"
     },
+    {
+        "task": "Tarefa 3",
+        "urgency": "",
+        "dueDate": "03/12/2020",
+        "category": "doing"
+    },
+    {
+        "task": "Tarefa 4",
+        "urgency": "important",
+        "dueDate": "27/12/2020",
+        "category": "done"
+    },
+    {
+        "task": "Tarefa muito importante que deve ser feita sem demora",
+        "urgency": "urgent",
+        "dueDate": "13/11/2020",
+        "category": "todo"
+    },
+    {
+        "task": "Tarefa 1",
+        "urgency": "important",
+        "dueDate": "01/10/2020",
+        "category": "todo"
+    },
+    {
+        "task": "Tarefa muito importante que deve ser feita sem demora para que obtenhamos os resultados esperados no tempo",
+        "urgency": "urgent",
+        "dueDate": "13/11/2020",
+        "category": "doing"
+    },
+    {
+        "task": "Tarefa muito importante que deve ser feita sem demora para que obtenhamos os resultados esperados no tempo",
+        "urgency": "urgent",
+        "dueDate": "13/11/2020",
+        "category": "done"
+    },
+    {
+        "task": "Tarefa muito importante que deve ser feita sem demora para que obtenhamos os resultados esperados no tempo",
+        "urgency": "urgent",
+        "dueDate": "13/11/2020",
+        "category": "todo"
+    },
+
     {
         "task": "Tarefa 3",
         "urgency": "",
