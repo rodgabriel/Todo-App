@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
         outline: none;
     }
 
+    html, body, #root {
+        height: 100%;
+    }
+
     body {
         background: #F6F8F9;
 

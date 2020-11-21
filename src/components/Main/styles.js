@@ -13,7 +13,7 @@ export const Container = styled.main`
 
 export const Category = styled.div`
     flex: 1;
-    min-height: 500px;
+    min-height: 100%;
 
     display: flex;
     flex-direction: column;
@@ -21,6 +21,8 @@ export const Category = styled.div`
     align-items: flex-start;
 
     padding: 40px 60px 20px;
+
+    transition: 0.3s all ease;
 `;
 
 export const CategoryTitle = styled.div`
@@ -45,6 +47,8 @@ export const CardContainer = styled.div`
 
     margin: 12px 0;
     padding: 20px 30px;
+
+    user-select: none;
 
     transition: 0.3s all ease;
 `;
