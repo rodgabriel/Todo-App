@@ -18,6 +18,9 @@ export default function Index() {
 
     useEffect(() => {
         fireDb.child("tasks").on("value", (snapshot) => {
+            if (snapshot.val() === null) {
+                setTasks({});
+            }
             if (snapshot.val() !== null) {
                 setTasks({ ...snapshot.val() });
             }
