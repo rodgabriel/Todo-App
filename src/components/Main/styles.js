@@ -36,9 +36,11 @@ export const CategoryTitle = styled.div`
 
 export const CardContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+
+    position: relative;
 
     width: 100%;
     min-height: 110px;
@@ -56,6 +58,17 @@ export const CardContainer = styled.div`
     transition: 0.3s all ease;
 `;
 
+export const Content = styled.div`
+    flex: 1;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+`;
+
 export const CardTitle = styled.div`
     flex: 1;
 
@@ -67,10 +80,16 @@ export const CardTitle = styled.div`
 
     margin-bottom: 12px;
 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
     > i {
         margin-right: 12px;
         filter: opacity(40%);
         cursor: pointer;
+
+        font-size: 24px;
 
         transition: all 0.2s ease;
 
@@ -111,5 +130,41 @@ export const Date = styled.div`
 
     > i {
         font-size: 16px;
+    }
+`;
+
+export const Buttons = styled.div`
+    font-size: 24px;
+`;
+
+export const DoneButton = styled.div`
+    margin-bottom: 12px;
+
+    color: #00dca3;
+
+    opacity: 0.35;
+
+    cursor: pointer;
+    transition: 0.2s all ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
+`;
+
+export const DeleteButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #ff005f;
+
+    opacity: 0.35;
+
+    cursor: pointer;
+    transition: 0.2s all ease;
+
+    &:hover {
+        opacity: 0.8;
     }
 `;

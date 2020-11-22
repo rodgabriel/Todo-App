@@ -1,4 +1,15 @@
-import { CardContainer, CardTitle, Urgency, Date } from "./styles";
+import fireDb from "../../firebase";
+
+import {
+    CardContainer,
+    Content,
+    CardTitle,
+    Urgency,
+    Date,
+    Buttons,
+    DoneButton,
+    DeleteButton,
+} from "./styles";
 
 export default function Card({ task, id }) {
     const dragStart = (e) => {
@@ -16,6 +27,15 @@ export default function Card({ task, id }) {
         e.target.style.opacity = "1";
     };
 
+    const onDoneClick = () => {
+        task.category !== "done" &&
+            fireDb.child("tasks").child(id).child("category").set("done");
+    };
+
+    const onDeleteClick = () => {
+        fireDb.child("tasks").child(id).remove();
+    };
+
     return (
         <CardContainer
             id={id}
@@ -24,18 +44,26 @@ export default function Card({ task, id }) {
             onDragOver={dragOver}
             onDragEnd={dragEnd}
         >
-            <CardTitle>
-                <i className="far fa-check-circle"></i>
-                {task.task}
-            </CardTitle>
-            {task.urgency && (
-                <Urgency urgency={task.urgency}>{task.urgency}</Urgency>
-            )}
+            <Content>
+                <CardTitle>{task.task}</CardTitle>
 
-            <Date>
-                <i className="far fa-calendar"></i>
-                <span>{task.dueDate}</span>
-            </Date>
+                {task.urgency && (
+                    <Urgency urgency={task.urgency}>{task.urgency}</Urgency>
+                )}
+
+                <Date>
+                    <i className="far fa-calendar"></i>
+                    <span>{task.dueDate}</span>
+                </Date>
+            </Content>
+            <Buttons>
+                <DoneButton onClick={onDoneClick}>
+                    <i className="far fa-check-circle"></i>
+                </DoneButton>
+                <DeleteButton onClick={onDeleteClick}>
+                    <i className="far fa-times-circle"></i>
+                </DeleteButton>
+            </Buttons>
         </CardContainer>
     );
 }
