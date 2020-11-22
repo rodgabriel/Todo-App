@@ -27,30 +27,32 @@ export default function Index() {
     const onDragEnd = (result) => {
         // Checks which category the task card was dropped into
         // and then changes the task category accordingly
-        switch (result.destination.droppableId) {
-            case "0":
-                fireDb
-                    .child("tasks")
-                    .child(result.draggableId)
-                    .child("category")
-                    .set("todo");
-                break;
-            case "1":
-                fireDb
-                    .child("tasks")
-                    .child(result.draggableId)
-                    .child("category")
-                    .set("doing");
-                break;
-            case "2":
-                fireDb
-                    .child("tasks")
-                    .child(result.draggableId)
-                    .child("category")
-                    .set("done");
-                break;
-            default:
-                break;
+        if (result.destination !== null) {
+            switch (result.destination.droppableId) {
+                case "0":
+                    fireDb
+                        .child("tasks")
+                        .child(result.draggableId)
+                        .child("category")
+                        .set("todo");
+                    break;
+                case "1":
+                    fireDb
+                        .child("tasks")
+                        .child(result.draggableId)
+                        .child("category")
+                        .set("doing");
+                    break;
+                case "2":
+                    fireDb
+                        .child("tasks")
+                        .child(result.draggableId)
+                        .child("category")
+                        .set("done");
+                    break;
+                default:
+                    break;
+            }
         }
     };
 
@@ -71,8 +73,8 @@ export default function Index() {
                                         ref={provided.innerRef}
                                         style={{
                                             background: snapshot.isDraggingOver
-                                                ? "lightcoral"
-                                                : "lightgrey",
+                                                ? "#0099ff1f"
+                                                : "transparent",
                                             marginRight: "4px",
                                         }}
                                     >

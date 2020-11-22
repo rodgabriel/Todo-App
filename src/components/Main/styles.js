@@ -13,7 +13,8 @@ export const Container = styled.main`
 
 export const Category = styled.div`
     flex: 1;
-    min-height: 100%;
+    min-height: 90vh;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
@@ -21,6 +22,8 @@ export const Category = styled.div`
     align-items: flex-start;
 
     padding: 40px 60px 20px;
+
+    border-radius: 12px;
 
     transition: 0.3s all ease;
 `;
@@ -88,7 +91,7 @@ export const Urgency = styled.div`
     margin-bottom: 16px;
 
     border-radius: 12px;
-    background: ${(props) => (props.urgency === "urgent" ? "#9F46E4" : "#FFA800")};
+    background: ${(props) => (props.urgency === "urgent" ? "#9f00ff" : "#FFA800")};
     color: #fff;
 
     font-size: 12px;
