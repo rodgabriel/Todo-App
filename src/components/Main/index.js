@@ -1,89 +1,69 @@
 import { useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { v4 as uuid } from "uuid";
 
 import Card from "./Card";
 
 import { Container, Category, CategoryTitle } from "./styles";
 
-import data from "../../fakedata.json";
+import fireDb from "../../firebase";
 
 export default function Index() {
-    const [tasks, setTasks] = useState([]);
-
-    useEffect(() => {
-        fetch(data).then(setTasks(data));
-    }, []);
+    const [tasks, setTasks] = useState({});
 
     const categories = {
-        [uuid()]: {
-            name: "Todo",
-            items: tasks.filter((task) => task.category === "todo" && task),
-        },
-        [uuid()]: {
-            name: "In progress",
-            items: tasks.filter((task) => task.category === "doing" && task),
-        },
-        [uuid()]: {
-            name: "Done",
-            items: tasks.filter((task) => task.category === "done" && task),
-        },
+        "To do": { id: "0", type: "todo" },
+        "In progress": { id: "1", type: "doing" },
+        Done: { id: "2", type: "done" },
     };
 
-    const [allCategories, setAllCategories] = useState(categories);
+    useEffect(() => {
+        fireDb.child("tasks").on("value", (snapshot) => {
+            if (snapshot.val() !== null) {
+                setTasks({ ...snapshot.val() });
+            }
+        });
+    }, []);
 
-    // Drag and Drop methods for the Category Boards
-    const onDragEnd = (result, allCategories, setAllCategories) => {
-        const { source, destination } = result;
-
-        if (!destination) return;
-        if (source.droppableId !== destination.droppableId) {
-            const sourceCategory = allCategories[source.droppableId];
-            const destinationCategory = allCategories[destination.droppableId];
-            const sourceTasks = [...sourceCategory.items];
-            const destinationTasks = [...destinationCategory.items];
-            const [removed] = sourceTasks.splice(source.index, 1);
-            destinationTasks.splice(destination.index, 0, removed);
-
-            setAllCategories({
-                ...allCategories,
-                [source.droppableId]: {
-                    ...sourceCategory,
-                    items: sourceTasks,
-                },
-                [destination.droppableId]: {
-                    ...destinationCategory,
-                    items: destinationTasks,
-                },
-            });
-        } else {
-            const category = categories[source.droppableId];
-            const copiedTasks = [...category.items];
-
-            const [removed] = copiedTasks.splice(source.index, 1);
-
-            copiedTasks.splice(destination.index, 0, removed);
-
-            setAllCategories({
-                ...allCategories,
-                [source.droppableId]: {
-                    ...category,
-                    items: copiedTasks,
-                },
-            });
+    const onDragEnd = (result) => {
+        // Checks which category the task card was dropped into
+        // and then changes the task category accordingly
+        switch (result.destination.droppableId) {
+            case "0":
+                fireDb
+                    .child("tasks")
+                    .child(result.draggableId)
+                    .child("category")
+                    .set("todo");
+                break;
+            case "1":
+                fireDb
+                    .child("tasks")
+                    .child(result.draggableId)
+                    .child("category")
+                    .set("doing");
+                break;
+            case "2":
+                fireDb
+                    .child("tasks")
+                    .child(result.draggableId)
+                    .child("category")
+                    .set("done");
+                break;
+            default:
+                break;
         }
     };
 
     return (
         <Container>
-            <DragDropContext
-                onDragEnd={(result) =>
-                    onDragEnd(result, allCategories, setAllCategories)
-                }
-            >
-                {Object.keys(categories).map((category, id) => {
+            <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
+                {Object.entries(categories).map(([key, category]) => {
                     return (
-                        <Droppable droppableId={String(id)} key={String(id)}>
+                        <Droppable
+                            droppableId={category.id}
+                            key={category.id}
+                            category={category.type}
+                        >
                             {(provided, snapshot) => {
                                 return (
                                     <Category
@@ -96,12 +76,19 @@ export default function Index() {
                                             marginRight: "4px",
                                         }}
                                     >
-                                        {categories[category].items.map(
-                                            (item, index) => {
+                                        <CategoryTitle>{key}</CategoryTitle>
+                                        {Object.entries(tasks)
+                                            .filter((task) => {
+                                                return (
+                                                    task[1].category ===
+                                                    category.type
+                                                );
+                                            })
+                                            .map(([id, task], index) => {
                                                 return (
                                                     <Draggable
-                                                        key={item.id}
-                                                        draggableId={item.task}
+                                                        key={id}
+                                                        draggableId={id}
                                                         index={index}
                                                     >
                                                         {(provided, snapshot) => {
@@ -121,15 +108,15 @@ export default function Index() {
                                                                     }}
                                                                 >
                                                                     <Card
-                                                                        task={item}
-                                                                    ></Card>
+                                                                        id={id}
+                                                                        task={task}
+                                                                    />
                                                                 </div>
                                                             );
                                                         }}
                                                     </Draggable>
                                                 );
-                                            }
-                                        )}
+                                            })}
                                         {provided.placeholder}
                                     </Category>
                                 );

@@ -1,5 +1,19 @@
 import { Navbar } from "./styles";
 
-export default function index() {
-    return <Navbar />;
+import fireDb from "../../firebase";
+
+export default function Index() {
+    function writeUserData() {
+        fireDb.child("tasks").push({
+            task: "Tarefa 3 - Done",
+            category: "done",
+            dueDate: "12/12/2020",
+            urgency: "urgent",
+        });
+    }
+    return (
+        <Navbar>
+            <button onClick={writeUserData}>Go!</button>
+        </Navbar>
+    );
 }
