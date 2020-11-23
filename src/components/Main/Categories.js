@@ -7,7 +7,7 @@ import { useTasks } from "../../context/TasksContext";
 import fireDb from "../../firebase";
 
 // components
-import { Category, CategoryTitle } from "./styles";
+import { Category, CategoryHeader } from "./styles";
 import Card from "./Card";
 
 export default function Categories() {
@@ -69,7 +69,14 @@ export default function Categories() {
                                         width: "100%",
                                     }}
                                 >
-                                    <CategoryTitle>{key}</CategoryTitle>
+                                    <CategoryHeader>
+                                        <div className="category-header-title">
+                                            {key}
+                                        </div>
+                                        <div className="category-header-btn">
+                                            <i class="fas fa-plus"></i>
+                                        </div>
+                                    </CategoryHeader>
                                     <Category
                                         {...provided.droppableProps}
                                         ref={provided.innerRef}

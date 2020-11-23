@@ -37,18 +37,38 @@ export const Category = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
 
-    padding: 10px;
+    padding: 10px 20px;
 
     border-radius: 12px 12px 0 0;
 
     transition: 0.3s all ease;
 `;
 
-export const CategoryTitle = styled.div`
+export const CategoryHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    width: 100%;
+
+    padding: 0 20px;
+
     font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 18px;
-    margin-left: 10px;
+
+    .category-header-title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .category-header-btn {
+        opacity: 0.4;
+        cursor: pointer;
+        transition: 0.3s all ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
 `;
 
 export const CardContainer = styled.div`

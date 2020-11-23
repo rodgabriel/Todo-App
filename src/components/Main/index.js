@@ -1,5 +1,8 @@
-import { Wrapper, TasksContainer, Aside } from "./styles";
+// compenents
 import Categories from "./Categories";
+
+// styled components
+import { Wrapper, TasksContainer, Aside } from "./styles";
 
 // tasks context
 import { useTasks } from "../../context/TasksContext";
