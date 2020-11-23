@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     
 
     body {
-        background: #F6F8F9;
+        background: #Eff3F4;
 
         font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
     }

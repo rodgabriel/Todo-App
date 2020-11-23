@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.main`
+export const Wrapper = styled.main`
     height: 100%;
     width: 100%;
 
@@ -11,9 +11,25 @@ export const Container = styled.main`
     padding: 0 40px;
 `;
 
+export const TasksContainer = styled.div`
+    flex: 7;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    background: #fff;
+    padding: 30px 20px 0;
+
+    border-radius: 12px;
+
+    box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.15);
+`;
+
 export const Category = styled.div`
     flex: 1;
-    min-height: 90vh;
+    min-height: 75vh;
     height: 100%;
 
     display: flex;
@@ -21,17 +37,18 @@ export const Category = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
 
-    padding: 40px 60px 20px;
+    padding: 10px;
 
-    border-radius: 12px;
+    border-radius: 12px 12px 0 0;
 
     transition: 0.3s all ease;
 `;
 
 export const CategoryTitle = styled.div`
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 18px;
+    margin-left: 10px;
 `;
 
 export const CardContainer = styled.div`
@@ -45,9 +62,10 @@ export const CardContainer = styled.div`
     width: 100%;
     min-height: 110px;
 
-    background: #fff;
-    box-shadow: 0px 0px 22px -10px rgba(0, 0, 0, 0.15);
+    background: #eff3f466;
+    //box-shadow: 0px 0px 22px -10px rgba(0, 0, 0, 0.15);
 
+    border: 1px solid #b3b5ff33;
     border-radius: 12px;
 
     margin: 12px 0;
@@ -166,5 +184,57 @@ export const DeleteButton = styled.div`
 
     &:hover {
         opacity: 0.8;
+    }
+`;
+
+export const Aside = styled.aside`
+    flex: 1;
+
+    background: #fff;
+
+    border-radius: 12px;
+    margin-left: 36px;
+
+    padding: 2.5% 4%;
+
+    text-align: center;
+
+    box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.15);
+
+    > .text {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+        font-size: 18px;
+
+        margin-top: 12px;
+
+        > .number {
+            height: 100%;
+
+            display: flex;
+            justify-content: flex-end;
+
+            font-size: 64px;
+            font-weight: bold;
+
+            margin-right: 8px;
+            color: #ff3e00;
+        }
+
+        > .un {
+            align-self: center;
+            text-align: left;
+            height: 100%;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        flex: 0.1;
+    }
+
+    @media (max-width: 960px) {
+        display: none;
     }
 `;
