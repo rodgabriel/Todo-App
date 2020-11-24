@@ -15,6 +15,7 @@ export default function Index() {
             <TasksContainer>
                 <Categories></Categories>
             </TasksContainer>
+
             <Aside>
                 <h3>Tasks to finish:</h3>
                 <div className="text">

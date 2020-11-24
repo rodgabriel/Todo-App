@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+// drag and drop
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 // tasks context
@@ -9,9 +12,15 @@ import fireDb from "../../firebase";
 // components
 import { Category, CategoryHeader } from "./styles";
 import Card from "./Card";
+import AddNewTask from "./AddNewTask";
 
 export default function Categories() {
     const { tasks } = useTasks();
+
+    const [showAddNewTask, setShowAddNewTask] = useState({
+        show: false,
+        category: null,
+    });
 
     const categories = {
         "To do": { id: "0", type: "todo" },
@@ -63,6 +72,7 @@ export default function Categories() {
                         {(provided, snapshot) => {
                             return (
                                 <div
+                                    key={key}
                                     style={{
                                         display: "flex",
                                         flexDirection: "column",
@@ -73,8 +83,17 @@ export default function Categories() {
                                         <div className="category-header-title">
                                             {key}
                                         </div>
+
                                         <div className="category-header-btn">
-                                            <i class="fas fa-plus"></i>
+                                            <i
+                                                class="fas fa-plus"
+                                                onClick={() => {
+                                                    setShowAddNewTask({
+                                                        show: true,
+                                                        category: category.type,
+                                                    });
+                                                }}
+                                            ></i>
                                         </div>
                                     </CategoryHeader>
                                     <Category
@@ -89,6 +108,12 @@ export default function Categories() {
                                             marginRight: "4px",
                                         }}
                                     >
+                                        {showAddNewTask.show &&
+                                        showAddNewTask.category === category.type ? (
+                                            <AddNewTask
+                                                category={`${category.type}`}
+                                            />
+                                        ) : null}
                                         {Object.entries(tasks)
                                             .filter((task) => {
                                                 return (

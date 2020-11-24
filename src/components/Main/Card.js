@@ -11,7 +11,7 @@ import {
     DeleteButton,
 } from "./styles";
 
-export default function Card({ task, id }) {
+export default function Card({ task, id, title }) {
     const dragStart = (e) => {
         const target = e.target;
         e.dataTransfer.setData("card_id", target.id);
@@ -45,7 +45,7 @@ export default function Card({ task, id }) {
             onDragEnd={dragEnd}
         >
             <Content>
-                <CardTitle>{task.task}</CardTitle>
+                <CardTitle>{title ? title : task.task}</CardTitle>
 
                 {task.urgency && (
                     <Urgency urgency={task.urgency}>{task.urgency}</Urgency>

@@ -79,7 +79,7 @@ export const CardContainer = styled.div`
 
     position: relative;
 
-    width: 100%;
+    width: ${(props) => (props.width ? props.width : "100%")};
     min-height: 110px;
 
     background: #eff3f466;
@@ -94,6 +94,8 @@ export const CardContainer = styled.div`
     user-select: none;
 
     transition: 0.3s all ease;
+
+    z-index: 1 !important;
 `;
 
 export const Content = styled.div`
@@ -105,6 +107,65 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+
+    > input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid #00883033;
+        outline: none;
+        padding: 4px;
+        margin-bottom: 12px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        &[type="date"] {
+            font-family: --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+            &::before {
+                font-size: 14px;
+                color: #13131399;
+                content: attr(placeholder);
+            }
+        }
+    }
+
+    > select {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid #00883033;
+        outline: none;
+        padding: 4px 0;
+        margin-bottom: 12px;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        color: #13131333;
+
+        &.Urgent,
+        &.Important {
+            color: black;
+        }
+    }
+
+    > button {
+        padding: 8px 24px;
+        background: #008830aa;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: bold;
+
+        margin-top: 12px;
+
+        cursor: pointer;
+
+        align-self: flex-end;
+    }
 `;
 
 export const CardTitle = styled.div`
@@ -257,4 +318,17 @@ export const Aside = styled.aside`
     @media (max-width: 960px) {
         display: none;
     }
+`;
+
+export const NewTask = styled.div`
+    flex: 1;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding: 20px;
 `;
