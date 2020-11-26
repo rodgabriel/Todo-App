@@ -3,9 +3,6 @@ import { useState } from "react";
 // drag and drop
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-// tasks context
-import { useTasks } from "../../context/TasksContext";
-
 // firebase database
 import fireDb from "../../firebase";
 
@@ -14,9 +11,7 @@ import { Category, CategoryHeader } from "./styles";
 import Card from "./Card";
 import AddNewTask from "./AddNewTask";
 
-export default function Categories() {
-    const { tasks } = useTasks();
-
+export default function Categories({ tasks }) {
     const [showAddNewTask, setShowAddNewTask] = useState({
         show: false,
         category: null,

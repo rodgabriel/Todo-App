@@ -1,20 +1,32 @@
-import GlobalStyle from "./globalStyles";
+import { useState, useEffect } from "react";
+import fireDb from "./firebase";
 
-// context
-import { TasksProvider } from "./context/TasksContext";
+// user context
+import { useUser } from "./context/UserContext";
+
+import GlobalStyle from "./globalStyles";
 
 // components
 import NavBar from "./components/NavBar";
 import Main from "./components/Main";
 
 function App() {
+    const {
+        auth,
+        setAuth,
+        signed,
+        setSigned,
+        user,
+        setUser,
+        tasks,
+        setTasks,
+    } = useUser();
+
     return (
         <>
-            <TasksProvider>
-                <GlobalStyle />
-                <NavBar />
-                <Main />
-            </TasksProvider>
+            <GlobalStyle />
+            <NavBar />
+            <Main></Main>
         </>
     );
 }

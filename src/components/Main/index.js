@@ -1,19 +1,20 @@
+// user context
+import { useUser } from "../../context/UserContext";
+
 // compenents
 import Categories from "./Categories";
+import Login from "./Login";
 
 // styled components
 import { Wrapper, TasksContainer, Aside } from "./styles";
 
-// tasks context
-import { useTasks } from "../../context/TasksContext";
-
 export default function Index() {
-    const { tasks } = useTasks();
+    const { signed, tasks, user } = useUser();
 
-    return (
+    return signed ? (
         <Wrapper>
             <TasksContainer>
-                <Categories></Categories>
+                <Categories tasks={tasks}></Categories>
             </TasksContainer>
 
             <Aside>
@@ -31,6 +32,10 @@ export default function Index() {
                     <div className="un">unfinished tasks</div>
                 </div>
             </Aside>
+        </Wrapper>
+    ) : (
+        <Wrapper>
+            <Login />
         </Wrapper>
     );
 }
