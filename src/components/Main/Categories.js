@@ -111,6 +111,7 @@ export default function Categories() {
                                         {showAddNewTask.show &&
                                         showAddNewTask.category === category.type ? (
                                             <AddNewTask
+                                                setShowAddNewTask={setShowAddNewTask}
                                                 category={`${category.type}`}
                                             />
                                         ) : null}

@@ -47,13 +47,11 @@ export default function Card({ task, id, title }) {
             <Content>
                 <CardTitle>{title ? title : task.task}</CardTitle>
 
-                {task.urgency && (
-                    <Urgency urgency={task.urgency}>{task.urgency}</Urgency>
-                )}
+                <Urgency urgency={task.urgency}>{task.urgency}</Urgency>
 
                 <Date>
                     <i className="far fa-calendar"></i>
-                    <span>{task.dueDate}</span>
+                    <span>{task.dueDate.split("-").reverse().join("/")}</span>
                 </Date>
             </Content>
             <Buttons>

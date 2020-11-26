@@ -80,9 +80,9 @@ export const CardContainer = styled.div`
     position: relative;
 
     width: ${(props) => (props.width ? props.width : "100%")};
-    min-height: 110px;
+    min-height: 135px;
 
-    background: #eff3f466;
+    background: ${(props) => (props.background ? props.background : "#eff3f466")};
     //box-shadow: 0px 0px 22px -10px rgba(0, 0, 0, 0.15);
 
     border: 1px solid #b3b5ff33;
@@ -102,10 +102,11 @@ export const Content = styled.div`
     flex: 1;
 
     width: 100%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
 
     > input {
@@ -119,6 +120,10 @@ export const Content = styled.div`
 
         font-size: 14px;
         font-weight: 600;
+
+        &[type="text"] {
+            font-size: 16px;
+        }
 
         &[type="date"] {
             font-family: --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -172,7 +177,7 @@ export const CardTitle = styled.div`
     flex: 1;
 
     width: 100%;
-    height: auto;
+    height: 100%;
 
     font-size: 16px;
     font-weight: 600;
@@ -204,12 +209,18 @@ export const Urgency = styled.div`
     align-items: center;
 
     width: 80px;
+    height: 24px;
 
     padding: 4px 20px;
     margin-bottom: 16px;
 
     border-radius: 12px;
-    background: ${(props) => (props.urgency === "urgent" ? "#9f00ff" : "#FFA800")};
+    background: ${(props) =>
+        props.urgency === "Urgent"
+            ? "#9f00ff"
+            : props.urgency === "Important"
+            ? "#FFA800"
+            : "transparent"};
     color: #fff;
 
     font-size: 12px;

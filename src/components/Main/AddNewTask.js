@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
-import { CardContainer, Content, Buttons } from "./styles";
+import { CardContainer, Content } from "./styles";
 
-export default function AddNewTask({ category }) {
+import fireDb from "../../firebase";
+
+export default function AddNewTask({ category, setShowAddNewTask }) {
     const taskName = useRef();
 
     const [newTask, setNewTask] = useState({
@@ -12,6 +14,10 @@ export default function AddNewTask({ category }) {
     });
 
     const onInputChange = (e) => {
+        if (e.target.name === "task") {
+            taskName.current.style.borderBottom = "2px solid #00883033";
+        }
+
         setNewTask({
             ...newTask,
             [e.target.name]: String(e.target.value),
@@ -20,16 +26,18 @@ export default function AddNewTask({ category }) {
 
     const onAddNewTaskClick = () => {
         if (newTask.task !== "") {
-            taskName.current.style.background = "transparent";
-            console.log("sucess");
+            fireDb.child("tasks").push(newTask);
+            setShowAddNewTask({
+                show: false,
+            });
         } else {
-            taskName.current.style.background = "#f8808066";
-            console.log("such empty");
+            taskName.current.style.borderBottom = "4px solid #f88080";
+            console.error("Task can't be empty");
         }
     };
 
     return (
-        <CardContainer>
+        <CardContainer background="#30986011">
             <Content>
                 <input
                     type="text"
