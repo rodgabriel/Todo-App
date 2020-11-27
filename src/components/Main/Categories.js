@@ -83,7 +83,15 @@ export default function Categories({ tasks }) {
                                             {key}
                                         </div>
 
-                                        <div className="category-header-btn">
+                                        <div
+                                            className={`category-header-btn ${
+                                                showAddNewTask.show &&
+                                                showAddNewTask.category ===
+                                                    category.type
+                                                    ? "closeNew"
+                                                    : ""
+                                            }`}
+                                        >
                                             <i
                                                 class="fas fa-plus"
                                                 onClick={() => {

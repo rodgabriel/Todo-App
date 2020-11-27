@@ -62,12 +62,34 @@ export const CategoryHeader = styled.div`
     }
 
     .category-header-btn {
-        opacity: 0.4;
         cursor: pointer;
         transition: 0.3s all ease;
 
+        color: #13131366;
+
+        width: 30px;
+        height: 30px;
+
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        z-index: 9999;
+
         &:hover {
-            opacity: 0.8;
+            color: #131313;
+        }
+
+        &.closeNew {
+            transform: translate(5px, 55px) rotate(45deg);
+            color: white;
+            background: #e15f41;
+
+            &:hover {
+                background: #ff3f31;
+            }
         }
     }
 `;
