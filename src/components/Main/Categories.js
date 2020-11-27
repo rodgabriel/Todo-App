@@ -27,6 +27,18 @@ export default function Categories({ tasks }) {
         Done: { id: "2", type: "done" },
     };
 
+    const onAddNewTaskClick = (category) => {
+        setShowAddNewTask({
+            show: true,
+            category: category,
+        });
+        if (showAddNewTask.show === true && showAddNewTask.category === category) {
+            setShowAddNewTask({
+                show: false,
+            });
+        }
+    };
+
     const onDragEnd = (result) => {
         // Checks which category the task card was dropped into
         // and then changes the task category accordingly
@@ -94,12 +106,9 @@ export default function Categories({ tasks }) {
                                         >
                                             <i
                                                 class="fas fa-plus"
-                                                onClick={() => {
-                                                    setShowAddNewTask({
-                                                        show: true,
-                                                        category: category.type,
-                                                    });
-                                                }}
+                                                onClick={() =>
+                                                    onAddNewTaskClick(category.type)
+                                                }
                                             ></i>
                                         </div>
                                     </CategoryHeader>
