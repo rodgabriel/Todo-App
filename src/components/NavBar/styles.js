@@ -9,6 +9,7 @@ export const Navbar = styled.div`
     align-items: center;
 
     padding: 0 40px;
+    margin-bottom: 20px;
 
     background: transparent;
 `;

@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+// user context
+import { useUser } from "../../context/UserContext";
+
 // drag and drop
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
@@ -12,6 +15,7 @@ import Card from "./Card";
 import AddNewTask from "./AddNewTask";
 
 export default function Categories({ tasks }) {
+    const { user } = useUser();
     const [showAddNewTask, setShowAddNewTask] = useState({
         show: false,
         category: null,
@@ -30,21 +34,21 @@ export default function Categories({ tasks }) {
             switch (result.destination.droppableId) {
                 case "0":
                     fireDb
-                        .child("tasks")
+                        .child(`${user.id}`)
                         .child(result.draggableId)
                         .child("category")
                         .set("todo");
                     break;
                 case "1":
                     fireDb
-                        .child("tasks")
+                        .child(`${user.id}`)
                         .child(result.draggableId)
                         .child("category")
                         .set("doing");
                     break;
                 case "2":
                     fireDb
-                        .child("tasks")
+                        .child(`${user.id}`)
                         .child(result.draggableId)
                         .child("category")
                         .set("done");
@@ -100,7 +104,6 @@ export default function Categories({ tasks }) {
                                                 : Object.keys(tasks).length === 0
                                                 ? "linear-gradient(to bottom, #0099ff11, #fff0)"
                                                 : "transparent",
-                                            marginRight: "4px",
                                         }}
                                     >
                                         {showAddNewTask.show &&

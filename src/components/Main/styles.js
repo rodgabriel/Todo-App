@@ -37,7 +37,8 @@ export const Category = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
 
-    padding: 10px 20px;
+    padding: 10px 10px;
+    margin: 10px 10px;
 
     border-radius: 12px 12px 0 0;
 
