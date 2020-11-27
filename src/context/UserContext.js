@@ -30,15 +30,17 @@ export function UserContextProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        fireDb.child("tasks").on("value", (snapshot) => {
-            if (snapshot.val() === null) {
-                setTasks({});
-            }
-            if (snapshot.val() !== null) {
-                setTasks({ ...snapshot.val() });
-            }
-        });
-    }, []);
+        if (user.id) {
+            fireDb.child(`${user.id}`).on("value", (snapshot) => {
+                if (snapshot.val() === null) {
+                    setTasks({});
+                }
+                if (snapshot.val() !== null) {
+                    setTasks({ ...snapshot.val() });
+                }
+            });
+        }
+    }, [user]);
 
     return (
         <UserContext.Provider

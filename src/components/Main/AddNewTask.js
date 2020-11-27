@@ -1,9 +1,13 @@
 import { useState, useRef } from "react";
 import { CardContainer, Content } from "./styles";
 
+// user context
+import { useUser } from "../../context/UserContext";
+
 import fireDb from "../../firebase";
 
 export default function AddNewTask({ category, setShowAddNewTask }) {
+    const { user } = useUser();
     const taskName = useRef();
 
     const [newTask, setNewTask] = useState({
@@ -26,7 +30,8 @@ export default function AddNewTask({ category, setShowAddNewTask }) {
 
     const onAddNewTaskClick = () => {
         if (newTask.task !== "") {
-            fireDb.child("tasks").push(newTask);
+            console.log(user.id);
+            fireDb.child(`${user.id}`).push(newTask);
             setShowAddNewTask({
                 show: false,
             });

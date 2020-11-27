@@ -1,5 +1,8 @@
 import fireDb from "../../firebase";
 
+// user context
+import { useUser } from "../../context/UserContext";
+
 import {
     CardContainer,
     Content,
@@ -12,6 +15,7 @@ import {
 } from "./styles";
 
 export default function Card({ task, id, title }) {
+    const { user } = useUser();
     const dragStart = (e) => {
         const target = e.target;
         e.dataTransfer.setData("card_id", target.id);
@@ -29,11 +33,11 @@ export default function Card({ task, id, title }) {
 
     const onDoneClick = () => {
         task.category !== "done" &&
-            fireDb.child("tasks").child(id).child("category").set("done");
+            fireDb.child(`${user.id}`).child(id).child("category").set("done");
     };
 
     const onDeleteClick = () => {
-        fireDb.child("tasks").child(id).remove();
+        fireDb.child(`${user.id}`).child(id).remove();
     };
 
     return (
