@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
-import { CardContainer, Content } from "./styles";
+import { CardContainer, Content } from "../styles";
 
 // user context
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../../context/UserContext";
 
-import fireDb from "../../firebase";
+import fireDb from "../../../firebase";
 
 export default function AddNewTask({ category, setShowAddNewTask }) {
     const { user } = useUser();

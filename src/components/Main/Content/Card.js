@@ -1,7 +1,7 @@
-import fireDb from "../../firebase";
+import fireDb from "../../../firebase";
 
 // user context
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../../context/UserContext";
 
 import {
     CardContainer,
@@ -12,7 +12,7 @@ import {
     Buttons,
     DoneButton,
     DeleteButton,
-} from "./styles";
+} from "../styles";
 
 export default function Card({ task, id, title }) {
     const { user } = useUser();

@@ -25,11 +25,16 @@ export const TasksContainer = styled.div`
     border-radius: 12px;
 
     box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 760px) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 export const Category = styled.div`
     flex: 1;
-    min-height: 75vh;
+    min-height: 72vh;
     height: 100%;
 
     display: flex;
@@ -43,6 +48,10 @@ export const Category = styled.div`
     border-radius: 12px 12px 0 0;
 
     transition: 0.3s all ease;
+
+    @media (max-width: 760px) {
+        min-height: auto;
+    }
 `;
 
 export const CategoryHeader = styled.div`
@@ -302,15 +311,15 @@ export const DeleteButton = styled.div`
     }
 `;
 
-export const Aside = styled.aside`
-    flex: 1;
+export const AsideContainer = styled.aside`
+    width: 100%;
 
     background: #fff;
 
     border-radius: 12px;
-    margin-left: 36px;
 
-    padding: 2.5% 4%;
+    padding: 15% 15%;
+    margin-bottom: 0px;
 
     text-align: center;
 

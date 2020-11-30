@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Navbar = styled.div`
-    height: 12vh;
+    height: 10vh;
     width: 100%;
 
     display: flex;
@@ -9,15 +9,26 @@ export const Navbar = styled.div`
     align-items: center;
 
     padding: 0 40px;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 
-    background: transparent;
+    background: #fff;
+
+    box-shadow: 0 0 30px -15px #0000001f;
 `;
 
 export const Logo = styled.div`
-    font-family: "Permanent Marker", cursive;
-    font-size: 36px;
-    letter-spacing: 6px;
+    font-size: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #316cff;
+
+    > img {
+        width: 40px;
+        margin-right: 24px;
+    }
 `;
 
 export const UserPanel = styled.div`
@@ -26,23 +37,37 @@ export const UserPanel = styled.div`
     align-items: center;
 
     > img {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         margin-right: 24px;
     }
 
     > h2 {
         margin-right: 24px;
+        font-size: 16px;
     }
 
     > button {
-        padding: 12px 24px;
+        padding: 8px 0 8px 16px;
         font-weight: bold;
         color: #de5246;
         background: transparent;
-        border: 1px solid #de524633;
-        border-radius: 12px;
+        border: none;
+        border-left: 2px solid #de524633;
         cursor: pointer;
+
+        transition: all 0.2s ease;
+
+        &:hover {
+            filter: saturate(150%);
+            border-left: 2px solid #de5246;
+        }
+    }
+
+    @media (max-width: 520px) {
+        > h2 {
+            display: none;
+        }
     }
 `;

@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 // user context
-import { useUser } from "../../context/UserContext";
+import { useUser } from "../../../context/UserContext";
 
 // drag and drop
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 // firebase database
-import fireDb from "../../firebase";
+import fireDb from "../../../firebase";
 
 // components
-import { Category, CategoryHeader } from "./styles";
+import { Category, CategoryHeader } from "../styles";
 import Card from "./Card";
 import AddNewTask from "./AddNewTask";
 
@@ -119,7 +119,7 @@ export default function Categories({ tasks }) {
                                             background: snapshot.isDraggingOver
                                                 ? "linear-gradient(to bottom, #0099ff1f, #0099ff00)"
                                                 : Object.keys(tasks).length === 0
-                                                ? "linear-gradient(to bottom, #0099ff11, #fff0)"
+                                                ? "linear-gradient(to bottom, #0099ff10, #fff0)"
                                                 : "transparent",
                                         }}
                                     >

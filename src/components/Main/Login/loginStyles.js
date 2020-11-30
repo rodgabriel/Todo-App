@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    height: 100%;
+    height: 100vh;
     width: 100%;
 
     display: flex;
@@ -42,7 +42,6 @@ export const SignInCard = styled.div`
         }
 
         > h1 {
-            font-family: "Permanent Marker", cursive;
             font-size: 48px;
             letter-spacing: 12px;
         }
