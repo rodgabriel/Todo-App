@@ -15,20 +15,16 @@ export default function Index() {
     };
 
     return (
-        <>
-            {signed && (
-                <Navbar>
-                    <Logo>
-                        <img src={logoSvg} alt="Logo" />
-                        <h1>Taskit</h1>
-                    </Logo>
-                    <UserPanel>
-                        <img src={user.img} alt="avatar"></img>
-                        <h2>{user.name}</h2>
-                        <button onClick={onSignOutClick}>Sign Out</button>
-                    </UserPanel>
-                </Navbar>
-            )}
-        </>
+        <Navbar>
+            <Logo>
+                <img src={logoSvg} alt="Logo" />
+                <h1>Taskit</h1>
+            </Logo>
+            <UserPanel>
+                <img src={user.img} alt="avatar"></img>
+                <h2>{user.name}</h2>
+                <button onClick={onSignOutClick}>Sign Out</button>
+            </UserPanel>
+        </Navbar>
     );
 }

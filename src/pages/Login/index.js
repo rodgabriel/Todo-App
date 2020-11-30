@@ -1,13 +1,15 @@
+import { useHistory } from "react-router-dom";
 // user context
-import { useUser } from "../../../context/UserContext";
+import { useUser } from "../../context/UserContext";
 
 // styled components
-import { Container, SignInCard } from "./loginStyles";
+import { Container, SignInCard } from "./styles";
 
 // image
-import heroImg from "../../../assets/tasks_hero.png";
+import heroImg from "../../assets/tasks_hero.png";
 
 export default function Login() {
+    const history = useHistory();
     const { auth, setSigned, setUser } = useUser();
 
     const onSignInClick = async () => {
@@ -17,11 +19,13 @@ export default function Login() {
 
         const profile = auth.currentUser.get().getBasicProfile();
 
-        setUser({
+        await setUser({
             id: profile.getId(),
             name: profile.getName(),
             img: profile.getImageUrl(),
         });
+
+        history.push("/dashboard");
     };
 
     return (

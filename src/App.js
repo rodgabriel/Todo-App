@@ -1,33 +1,24 @@
-import { useState, useEffect } from "react";
-import fireDb from "./firebase";
-
-// user context
-import { useUser } from "./context/UserContext";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import GlobalStyle from "./globalStyles";
 
 // components
-import NavBar from "./components/NavBar";
-import Main from "./components/Main";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-    const {
-        auth,
-        setAuth,
-        signed,
-        setSigned,
-        user,
-        setUser,
-        tasks,
-        setTasks,
-    } = useUser();
-
     return (
-        <>
+        <Router>
             <GlobalStyle />
-            <NavBar />
-            <Main></Main>
-        </>
+            <Switch>
+                <Route exact path="/">
+                    <Login />
+                </Route>
+                <Route exact path="/dashboard">
+                    <Dashboard />
+                </Route>
+            </Switch>
+        </Router>
     );
 }
 

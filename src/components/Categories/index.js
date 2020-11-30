@@ -1,21 +1,21 @@
 import { useState } from "react";
 
 // user context
-import { useUser } from "../../../context/UserContext";
+import { useUser } from "../../context/UserContext";
 
 // drag and drop
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 // firebase database
-import fireDb from "../../../firebase";
+import fireDb from "../../firebase";
 
 // components
-import { Category, CategoryHeader } from "../styles";
-import Card from "./Card";
-import AddNewTask from "./AddNewTask";
+import { Category, CategoryHeader } from "./styles";
+import Card from "../Card";
+import AddNewTask from "../Card/AddNewTask";
 
-export default function Categories({ tasks }) {
-    const { user } = useUser();
+export default function Categories() {
+    const { user, tasks } = useUser();
     const [showAddNewTask, setShowAddNewTask] = useState({
         show: false,
         category: null,

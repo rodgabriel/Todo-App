@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Navbar = styled.div`
+export const Navbar = styled.header`
     height: 10vh;
     width: 100%;
 
@@ -9,7 +9,6 @@ export const Navbar = styled.div`
     align-items: center;
 
     padding: 0 40px;
-    margin-bottom: 35px;
 
     background: #fff;
 
