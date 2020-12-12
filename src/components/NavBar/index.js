@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+
 import { Navbar, Logo, UserPanel } from "./styles";
 
 // user context
@@ -7,11 +9,13 @@ import { useUser } from "../../context/UserContext";
 import logoSvg from "../../assets/logo.svg";
 
 export default function Index() {
+    const history = useHistory();
     const { auth, signed, setSigned, user } = useUser();
 
     const onSignOutClick = () => {
         auth.signOut();
         setSigned(auth.isSignedIn.get());
+        history.push("/");
     };
 
     return (
