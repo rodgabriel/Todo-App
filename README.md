@@ -2,6 +2,8 @@
 
 App de Tarefas feito com React e Firebase
 
+Live demo: https://tarefas-app.netlify.app/
+
 ![TODO_APP](./readme_assets/app.png)
 
 ## Tecnologias utilizadas:
