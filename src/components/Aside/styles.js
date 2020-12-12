@@ -34,7 +34,7 @@ export const Container = styled.div`
     }
 
     & > h2 {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: normal;
     }
 
@@ -42,6 +42,10 @@ export const Container = styled.div`
         font-size: 22px;
         font-weight: normal;
         font-style: italic;
+
+        @media (max-width: 1160px) {
+            font-size: 18px;
+        }
     }
 
     & > small {

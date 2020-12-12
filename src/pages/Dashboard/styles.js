@@ -59,4 +59,9 @@ export const Sidebar = styled.aside`
     margin-left: 40px;
 
     border-radius: 12px;
+
+    @media (max-width: 1020px) {
+        display: none;
+        visibility: hidden;
+    }
 `;

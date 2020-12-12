@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Navbar = styled.header`
     height: 10vh;
+    min-height: 70px;
     width: 100%;
 
     display: flex;
