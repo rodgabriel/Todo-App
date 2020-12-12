@@ -6,8 +6,8 @@ export const Container = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
 
     background: #fff;
     padding: 30px 40px;
@@ -16,7 +16,22 @@ export const Container = styled.div`
 
     box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.15);
 
+    text-align: center;
+
     & > h1 {
-        color: orangered;
+        font-size: 40px;
+        color: #333;
+        margin-bottom: 4px;
+        text-transform: capitalize;
+
+        > strong {
+            font-size: 56px;
+            color: orangered;
+        }
+    }
+
+    & > h2 {
+        font-size: 20px;
+        font-weight: normal;
     }
 `;

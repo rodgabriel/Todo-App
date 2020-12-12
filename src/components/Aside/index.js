@@ -1,27 +1,43 @@
 import { Container } from "./styles";
 
+// user context
+import { useUser } from "../../context/UserContext";
+
 export default function Index() {
+    const { tasks } = useUser();
     return (
         <>
             <Container>
-                Today is
+                <h2>Bem-vindo! Hoje é:</h2>
                 <h1>
-                    {new Date().toLocaleDateString("en-gb", {
+                    {new Date().getDate()}{" "}
+                    {new Date().toLocaleString("pt-BR", { month: "short" })}
+                    {/* {new Date().toLocaleDateString("pt-BR", {
                         day: "2-digit",
                         month: "short",
                         year: "2-digit",
-                    })}
+                    })} */}
                 </h1>
             </Container>
 
             <Container>
-                You have:
-                <h1>3</h1>
-                <p>unfinished tasks</p>
+                <h2>Você tem:</h2>
+                <h1>
+                    <strong>
+                        {
+                            Object.entries(tasks)
+                                .map(([key, task]) => {
+                                    return task;
+                                })
+                                .filter((task) => task.category !== "done").length
+                        }
+                    </strong>
+                </h1>
+                <p>tarefas para terminar</p>
             </Container>
 
             <Container>
-                <h3>Quote of the day</h3>
+                <h2>Frase do dia:</h2>
                 <br />
                 <p
                     style={{
