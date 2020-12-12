@@ -20,6 +20,6 @@ App de Tarefas feito com React e Firebase
 
 ![drag and drop feature](./readme_assets/Tasks.gif)
 
+- Funcionalidade Drag and Drop que altera a categoria das tarefas (ex: a fazer => feito)
 - Autenticação com Google OAuth 2.0
 - Criar tarefas com título, urgência e prazo de entrega
-- Drag and drop
