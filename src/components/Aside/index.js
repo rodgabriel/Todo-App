@@ -11,7 +11,7 @@ export default function Index() {
     useEffect(() => {
         fetch("https://quotes.rest/qod")
             .then((res) => res.json())
-            .then((data) => setQuote(data.contents.quotes[0].quote));
+            .then((data) => setQuote(String(data.contents.quotes[0].quote)));
     }, []);
 
     return (
