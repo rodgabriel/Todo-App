@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    flex: 1;
     width: 100%;
-    min-height: calc(25%);
 
     display: flex;
     flex-direction: column;
@@ -11,6 +11,10 @@ export const Container = styled.div`
 
     background: #fff;
     padding: 30px 40px;
+
+    &:not(:last-child) {
+        margin-bottom: 36px;
+    }
 
     border-radius: 12px;
 
@@ -21,7 +25,6 @@ export const Container = styled.div`
     & > h1 {
         font-size: 40px;
         color: #333;
-        margin-bottom: 4px;
         text-transform: capitalize;
 
         > strong {
@@ -33,5 +36,15 @@ export const Container = styled.div`
     & > h2 {
         font-size: 20px;
         font-weight: normal;
+    }
+
+    & > p {
+        font-size: 22px;
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    & > small {
+        font-size: 18px;
     }
 `;

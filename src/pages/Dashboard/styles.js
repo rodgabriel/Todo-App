@@ -45,6 +45,8 @@ export const Main = styled.main`
 `;
 
 export const Sidebar = styled.aside`
+    align-self: flex-start;
+
     flex: 2;
 
     display: flex;
@@ -52,7 +54,7 @@ export const Sidebar = styled.aside`
     justify-content: space-between;
 
     min-height: 82vh;
-    height: 100%;
+    max-height: 82vh;
 
     margin-left: 40px;
 

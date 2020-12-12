@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
 
 // user context
@@ -5,6 +6,14 @@ import { useUser } from "../../context/UserContext";
 
 export default function Index() {
     const { tasks } = useUser();
+    const [quote, setQuote] = useState("");
+
+    useEffect(() => {
+        fetch("https://quotes.rest/qod")
+            .then((res) => res.json())
+            .then((data) => setQuote(data.contents.quotes[0].quote));
+    }, []);
+
     return (
         <>
             <Container>
@@ -12,11 +21,6 @@ export default function Index() {
                 <h1>
                     {new Date().getDate()}{" "}
                     {new Date().toLocaleString("pt-BR", { month: "short" })}
-                    {/* {new Date().toLocaleDateString("pt-BR", {
-                        day: "2-digit",
-                        month: "short",
-                        year: "2-digit",
-                    })} */}
                 </h1>
             </Container>
 
@@ -33,23 +37,13 @@ export default function Index() {
                         }
                     </strong>
                 </h1>
-                <p>tarefas para terminar</p>
+                <small>tarefas para terminar</small>
             </Container>
 
             <Container>
-                <h2>Frase do dia:</h2>
+                <h2>Quote of the day:</h2>
                 <br />
-                <p
-                    style={{
-                        textAlign: "justify",
-                        textJustify: "inter-character",
-                    }}
-                >
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Quisquam labore nam explicabo minima iusto veritatis perferendis
-                    ea laudantium libero sunt, excepturi ab impedit numquam in quas
-                    maiores molestias commodi. Optio!
-                </p>
+                <p>{quote}</p>
             </Container>
         </>
     );

@@ -30,7 +30,6 @@ export default function AddNewTask({ category, setShowAddNewTask }) {
 
     const onAddNewTaskClick = () => {
         if (newTask.task !== "") {
-            console.log(user.id);
             fireDb.child(`${user.id}`).push(newTask);
             setShowAddNewTask({
                 show: false,
