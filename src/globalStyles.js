@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     /* total width */
     body::-webkit-scrollbar {
         background-color: transparent;
-        width:16px
+        width:12px
     }
 
     /* background of the scrollbar except button or resizer */
@@ -37,13 +37,20 @@ const GlobalStyle = createGlobalStyle`
 
     /* scrollbar itself */
     body::-webkit-scrollbar-thumb {
-        background-color:#131313;
-        border-radius: 12px;
-        border: 3px solid #333333;
+        background-color: #0808f8aa;	
+        background-image: -webkit-linear-gradient(45deg,
+	                                          rgba(255, 255, 255, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, .2) 50%,
+											  rgba(255, 255, 255, .2) 75%,
+											  transparent 75%,
+											  transparent);
+        border-radius: 0;
+        border: 1px solid #33336666;
     }
     body::-webkit-scrollbar-thumb:hover {
-        background-color:#232323;
-        border:4px solid #434343;
+        filter: brightness(60%);
     }
 
     /* set button(top and bottom of the scrollbar) */
