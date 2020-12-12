@@ -50,6 +50,7 @@ export default function AddNewTask({ category, setShowAddNewTask }) {
                     onChange={(e) => onInputChange(e)}
                     placeholder="New task..."
                     ref={taskName}
+                    autoComplete="off"
                 />
                 <select
                     name="urgency"
