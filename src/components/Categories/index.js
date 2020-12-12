@@ -22,9 +22,9 @@ export default function Categories() {
     });
 
     const categories = {
-        "To do": { id: "0", type: "todo" },
-        "In progress": { id: "1", type: "doing" },
-        Done: { id: "2", type: "done" },
+        "A fazer": { id: "0", type: "todo" },
+        "Em progresso": { id: "1", type: "doing" },
+        Feito: { id: "2", type: "done" },
     };
 
     const onAddNewTaskClick = (category) => {

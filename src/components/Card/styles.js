@@ -78,7 +78,11 @@ export const Content = styled.div`
         font-size: 14px;
         font-weight: 600;
 
-        color: #13131333;
+        color: #13131366;
+
+        & > option {
+            color: #131313;
+        }
 
         &.Urgent,
         &.Important {

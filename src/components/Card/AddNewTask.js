@@ -48,7 +48,7 @@ export default function AddNewTask({ category, setShowAddNewTask }) {
                     name="task"
                     value={newTask.task}
                     onChange={(e) => onInputChange(e)}
-                    placeholder="New task..."
+                    placeholder="Nova tarefa..."
                     ref={taskName}
                     autoComplete="off"
                 />
@@ -60,20 +60,20 @@ export default function AddNewTask({ category, setShowAddNewTask }) {
                     }}
                     className={`${newTask.urgency}`}
                 >
-                    <option value="">How urgent is your task?</option>
+                    <option value="">Urgência da Tarefa</option>
                     <option>Urgent</option>
                     <option>Important</option>
                 </select>
 
                 <input
                     type="date"
-                    placeholder="Due date: &nbsp;"
+                    placeholder="Prazo: &nbsp;"
                     name="dueDate"
                     value={newTask.dueDate}
                     onChange={(e) => onInputChange(e)}
                 />
 
-                <button onClick={onAddNewTaskClick}>Add task</button>
+                <button onClick={onAddNewTaskClick}>Adicionar tarefa</button>
             </Content>
         </CardContainer>
     );
